@@ -1,0 +1,3 @@
+/home/notahacker/Documents/string_search/cmake-build-debug/CMakeFiles/rebuild_cache.dir
+/home/notahacker/Documents/string_search/cmake-build-debug/CMakeFiles/edit_cache.dir
+/home/notahacker/Documents/string_search/cmake-build-debug/CMakeFiles/string_search.dir
