@@ -1,0 +1,24 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/notahacker/Documents/string_search/main.cpp
+iostream
+-
+string
+-
+md5.h
+/home/notahacker/Documents/string_search/md5.h
+
+/home/notahacker/Documents/string_search/md5.h
+iostream
+-
+string
+-
+cstring
+-
+

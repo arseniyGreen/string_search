@@ -1,0 +1,1 @@
+/usr/bin/c++ -g CMakeFiles/string_search.dir/main.cpp.o -o string_search 
