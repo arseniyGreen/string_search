@@ -9,6 +9,8 @@
 /home/notahacker/Documents/string_search/main.cpp
 iostream
 -
+fstream
+-
 string
 -
 md5.h
