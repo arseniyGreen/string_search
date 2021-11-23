@@ -1,2 +1,3 @@
 https://clck.ru/YsrTe
 https://github.com/Jopo97/Rabin-Karp/blob/master/Source.cpp
+https://mnogotolka.ru/info/algoritm-rabina-karpa-c/
