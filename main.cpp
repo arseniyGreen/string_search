@@ -151,7 +151,7 @@ private:
                     stringSize = j + 1;
                     if(text[i + j] == pattern[j]) matches++;
                 }
-                int percentage = (matches / stringSize) * 100;
+                double percentage = matches * 100 / stringSize;
                 coincidence.first = i;
                 coincidence.second = percentage;
                 if(percentage > 70) positions.push_back(coincidence);
@@ -190,10 +190,19 @@ int main() {
     std::cout << "\n\tPartial coincidence search:\n";
     partialSearch search2;
     search2.printText();
-    search2.setPattern("Paris");
+
+    search2.setPattern(std::string("Pressura"));
     search2.start();
-    search2.setPattern(std::string("early"));
+
+    search2.setPattern(std::string("Pariz"));
     search2.start();
+
+//    search2.setPattern("Paris");
+//    search2.start();
+//    search2.setPattern(std::string("early"));
+//    search2.start();
+//    search2.setPattern(std::string("eerly"));
+//    search2.start();
 
     return 0;
 }
