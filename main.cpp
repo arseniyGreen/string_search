@@ -154,7 +154,7 @@ private:
                 double percentage = matches * 100 / stringSize;
                 coincidence.first = i;
                 coincidence.second = percentage;
-                if(percentage > 70) positions.push_back(coincidence);
+                if(percentage > 50) positions.push_back(coincidence);
             //}
            //Calculate next hash
             textHash = ((alph * (textHash - (h * text[i]))) + text[i + patternLength]) % Q;
@@ -194,7 +194,7 @@ int main() {
     search2.setPattern(std::string("Pressura"));
     search2.start();
 
-    search2.setPattern(std::string("Pariz"));
+    search2.setPattern(std::string("Periz"));
     search2.start();
 
 //    search2.setPattern("Paris");
