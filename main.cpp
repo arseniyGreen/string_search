@@ -1,9 +1,9 @@
 /*
- * TODOs
- * Rabin-Karp Alg implementation
- * Partly match implementation (class-styled)
- * Matching % sort function
- */
+ * Coursework 3 sem, KTSO-02-20
+ * Coded by:
+ * Arkadskov Arseniy
+ * Kasiev Ismail
+ * */
 
 #include <iostream>
 #include <fstream>
@@ -11,7 +11,7 @@
 #include <list>
 #include <cmath>
 
-#define FILEPATH "/home/notahacker/Documents/string_search/text.txt"
+#define FILEPATH "/home/notahacker/Documents/string_search/text.txt" // Change this
 #define alph 256
 
 class Search{
@@ -98,8 +98,9 @@ public:
             std::cerr << "Unable to open file.\n";
         }
     }
-    virtual void start()
+    virtual void start(std::string toFind)
     {
+        setPattern(toFind);
         std::list<int> answer = findHash();
         auto it = answer.begin();
         while(it != answer.end())
@@ -163,8 +164,9 @@ private:
         return positions;
     }
 public:
-    void start() override
+    void start(std::string toFind) override
     {
+        setPattern(toFind);
         std::list<std::pair<int,int>> answer = findPartialHash();
         auto it = answer.begin();
         while(it != answer.end())
@@ -179,30 +181,18 @@ int main() {
     std::cout << "\n\tFull coincidence search:\n";
     Search search;
     search.printText();
-    search.setPattern(std::string("early"));
-    search.start();
+    search.start(std::string("early"));
     std::cout << std::endl;
-    search.setPattern(std::string("Paris"));
-    search.start();
-    search.setPattern("Pariz");
-    search.start();
+    search.start(std::string("Paris"));
+    search.start(std::string("Pariz")); // No such word in text
 
     std::cout << "\n\tPartial coincidence search:\n";
     partialSearch search2;
     search2.printText();
 
-    search2.setPattern(std::string("Pressura"));
-    search2.start();
-
-    search2.setPattern(std::string("Periz"));
-    search2.start();
-
-//    search2.setPattern("Paris");
-//    search2.start();
-//    search2.setPattern(std::string("early"));
-//    search2.start();
-//    search2.setPattern(std::string("eerly"));
-//    search2.start();
+    search2.start(std::string("Pressure")); // 100%
+    search2.start(std::string("Pressura")); // Partial
+    search2.start(std::string("deel"));
 
     return 0;
 }
