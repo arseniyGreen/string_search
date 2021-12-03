@@ -2,7 +2,7 @@
 #define STRING_SEARCH_RK_H
 
 #define FILEPATH "/home/notahacker/Documents/string_search/dataset.txt" // Change this
-#define alph 256
+#define ALPH 256
 
 class Search{
 protected:
@@ -26,15 +26,15 @@ protected:
         int textLength = text.length();
         int patternLength = pattern.length();
 
-        // Calculate h (== pow(alph, patternLength - 1))
+        // Calculate h (== pow(ALPH, patternLength - 1))
         for(size_t i = 0; i < patternLength - 1; i++){
-            h = (h * alph) % Q;
+            h = (h * ALPH) % Q;
         }
 
         // Calculate starting hash
         for(size_t i = 0; i < patternLength; i++){
-            textHash = ((alph * textHash) + text[i]) % Q;
-            patternHash = ((alph * patternHash) + pattern[i]) % Q;
+            textHash = ((ALPH * textHash) + text[i]) % Q;
+            patternHash = ((ALPH * patternHash) + pattern[i]) % Q;
         }
 
         // Rolling hashing
@@ -53,7 +53,7 @@ protected:
                 if(stringSize == patternLength) positions.push_back(i);
             }
             // Calculate next hash
-            textHash = ((alph * (textHash - (h * text[i]))) + text[i + patternLength]) % Q;
+            textHash = ((ALPH * (textHash - (h * text[i]))) + text[i + patternLength]) % Q;
             if(textHash < 0) textHash += Q;
         }
         return positions;
@@ -115,15 +115,15 @@ private:
         int textLength = text.length();
         int patternLength = pattern.length();
 
-        // Calculate h (== pow(alph, patternLength - 1))
+        // Calculate h (== pow(ALPH, patternLength - 1))
         for(size_t i = 0; i < patternLength - 1; i++){
-            h = (h * alph) % Q;
+            h = (h * ALPH) % Q;
         }
 
         // Calculate starting hash
         for(size_t i = 0; i < patternLength; i++){
-            textHash = ((alph * textHash) + text[i]) % Q;
-            patternHash = ((alph * patternHash) + pattern[i]) % Q;
+            textHash = ((ALPH * textHash) + text[i]) % Q;
+            patternHash = ((ALPH * patternHash) + pattern[i]) % Q;
         }
 
         // Rolling hashing
@@ -148,7 +148,7 @@ private:
             if(percentage > 50) positions.push_back(coincidence);
             //}
             //Calculate next hash
-            textHash = ((alph * (textHash - (h * text[i]))) + text[i + patternLength]) % Q;
+            textHash = ((ALPH * (textHash - (h * text[i]))) + text[i + patternLength]) % Q;
             if(textHash < 0) textHash += Q;
         }
         return positions;
