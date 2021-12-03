@@ -6,7 +6,7 @@
 
 #IncludeRegexTransform: 
 
-/home/notahacker/Documents/string_search/main.cpp
+/home/notahacker/Documents/string_search/src/main.cpp
 iostream
 -
 fstream
@@ -15,6 +15,10 @@ string
 -
 list
 -
-cmath
+chrono
 -
+rk.h
+/home/notahacker/Documents/string_search/src/rk.h
+
+/home/notahacker/Documents/string_search/src/rk.h
 

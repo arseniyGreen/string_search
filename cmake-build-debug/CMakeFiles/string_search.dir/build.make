@@ -66,27 +66,27 @@ include CMakeFiles/string_search.dir/progress.make
 # Include the compile flags for this target's objects.
 include CMakeFiles/string_search.dir/flags.make
 
-CMakeFiles/string_search.dir/main.cpp.o: CMakeFiles/string_search.dir/flags.make
-CMakeFiles/string_search.dir/main.cpp.o: ../main.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/notahacker/Documents/string_search/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/string_search.dir/main.cpp.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/string_search.dir/main.cpp.o -c /home/notahacker/Documents/string_search/main.cpp
+CMakeFiles/string_search.dir/src/main.cpp.o: CMakeFiles/string_search.dir/flags.make
+CMakeFiles/string_search.dir/src/main.cpp.o: ../src/main.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/notahacker/Documents/string_search/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/string_search.dir/src/main.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/string_search.dir/src/main.cpp.o -c /home/notahacker/Documents/string_search/src/main.cpp
 
-CMakeFiles/string_search.dir/main.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/string_search.dir/main.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/notahacker/Documents/string_search/main.cpp > CMakeFiles/string_search.dir/main.cpp.i
+CMakeFiles/string_search.dir/src/main.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/string_search.dir/src/main.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/notahacker/Documents/string_search/src/main.cpp > CMakeFiles/string_search.dir/src/main.cpp.i
 
-CMakeFiles/string_search.dir/main.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/string_search.dir/main.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/notahacker/Documents/string_search/main.cpp -o CMakeFiles/string_search.dir/main.cpp.s
+CMakeFiles/string_search.dir/src/main.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/string_search.dir/src/main.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/notahacker/Documents/string_search/src/main.cpp -o CMakeFiles/string_search.dir/src/main.cpp.s
 
 # Object files for target string_search
 string_search_OBJECTS = \
-"CMakeFiles/string_search.dir/main.cpp.o"
+"CMakeFiles/string_search.dir/src/main.cpp.o"
 
 # External object files for target string_search
 string_search_EXTERNAL_OBJECTS =
 
-string_search: CMakeFiles/string_search.dir/main.cpp.o
+string_search: CMakeFiles/string_search.dir/src/main.cpp.o
 string_search: CMakeFiles/string_search.dir/build.make
 string_search: CMakeFiles/string_search.dir/link.txt
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/notahacker/Documents/string_search/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Linking CXX executable string_search"

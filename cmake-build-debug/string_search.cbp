@@ -84,10 +84,13 @@
 				</MakeCommands>
 			</Target>
 		</Build>
-		<Unit filename="/home/notahacker/Documents/string_search/main.cpp">
+		<Unit filename="/home/notahacker/Documents/string_search/src/bm.h">
 			<Option target="string_search"/>
 		</Unit>
-		<Unit filename="/home/notahacker/Documents/string_search/md5.h">
+		<Unit filename="/home/notahacker/Documents/string_search/src/main.cpp">
+			<Option target="string_search"/>
+		</Unit>
+		<Unit filename="/home/notahacker/Documents/string_search/src/rk.h">
 			<Option target="string_search"/>
 		</Unit>
 		<Unit filename="/home/notahacker/Documents/string_search/CMakeLists.txt">

@@ -8,7 +8,7 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_CXX
-  "/home/notahacker/Documents/string_search/main.cpp" "/home/notahacker/Documents/string_search/cmake-build-debug/CMakeFiles/string_search.dir/main.cpp.o"
+  "/home/notahacker/Documents/string_search/src/main.cpp" "/home/notahacker/Documents/string_search/cmake-build-debug/CMakeFiles/string_search.dir/src/main.cpp.o"
   )
 set(CMAKE_CXX_COMPILER_ID "GNU")
 
