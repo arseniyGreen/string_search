@@ -8,33 +8,73 @@
 class BM_Search
 {
 private:
-    int N, shift;
     std::string text;
     std::string pattern;
-public:
-    int start()
-    {
-        int i = 0, j = N - 1, textLen = text.size(), shiftIndex;
-        char lastChar = text[N - 1];
-        while(j + i < textLen)
-        {
-            if(text[i + j] != pattern[j] || j == 0)
-            {
-                shiftIndex = -1;
 
-                for(size_t k = 0; k < N; k++){
-                    if(lastChar == pattern[k])
-                    {
-                        shiftIndex = k;
-                        break;
-                    }
-                }
-                if(shiftIndex == -1) i += N;
-                else
-                {
-                    i += sample
-                }
+    void setFromFile() {
+        std::ifstream file;
+        file.open(FILEPATH, std::ios::in);
+        if (file.is_open()) {
+            std::string line;
+            while (std::getline(file, line)) {
+                text += line + "\n";
             }
+            file.close();
+        } else {
+            std::cerr << "Unable to open file.\n";
         }
+    }
+
+    int search()
+    {
+        int substringLen = 0; int stringLen = 0; int result = -1;
+        while(text[stringLen] != NULL) stringLen++;
+        while(pattern[substringLen] != NULL) substringLen++;
+
+        if(stringLen == 0){ std::cout << "\nIncorrect string."; }
+        else if(substringLen == 0){ std::cout << "\nIncorrect substring";}
+        else
+        {
+            int i, position;
+            int BMT[256];
+            for(i = 0; i < 256; i++) BMT[i] = substringLen;
+            for(i = substringLen - 1; i >= 0; i--)
+                if(BMT[(short)(pattern[i])] == substringLen)
+                    BMT[(short)(pattern[i])] = substringLen - i - 1;
+            position = substringLen - 1;
+            while(position < stringLen)
+                if(pattern[substringLen - 1] != text[position])
+                    position += BMT[(short)(text[position])];
+                else
+                    for(i = substringLen - 2; i >= 0; i--)
+                    {
+                        if(pattern[i] != text[position - substringLen + i + 1])
+                        {
+                            position += BMT[(short)(text[position - substringLen + i + 1])] - 1;
+                            break;
+                        }
+                        else
+                        {
+                            if(i == 0) return position - substringLen + 1;
+                        }
+                    }
+        }
+        return result;
+    }
+
+public:
+    void setPattern(std::string pattern_) { pattern = pattern_; }
+    void setText(std::string text_) { text = text_; }
+
+    std::string getText(){ return text; }
+    std::string getPattern() { return pattern; }
+
+    void start(std::string pattern_)
+    {
+        int res;
+        setFromFile();
+        setPattern(pattern_);
+        res = search();
+        std::cout << "\nDone " << res;
     }
 };

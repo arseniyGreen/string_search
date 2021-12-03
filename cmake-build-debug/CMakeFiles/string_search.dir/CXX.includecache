@@ -6,6 +6,16 @@
 
 #IncludeRegexTransform: 
 
+/home/notahacker/Documents/string_search/src/bm.h
+iostream
+-
+fstream
+-
+vector
+-
+string
+-
+
 /home/notahacker/Documents/string_search/src/main.cpp
 iostream
 -
@@ -19,6 +29,8 @@ chrono
 -
 rk.h
 /home/notahacker/Documents/string_search/src/rk.h
+bm.h
+/home/notahacker/Documents/string_search/src/bm.h
 
 /home/notahacker/Documents/string_search/src/rk.h
 

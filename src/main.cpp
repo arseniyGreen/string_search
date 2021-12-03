@@ -10,6 +10,7 @@
 #include <list>
 #include <chrono>
 #include "rk.h"
+#include "bm.h"
 
 template<
     class result_t = std::chrono::milliseconds,
@@ -40,6 +41,24 @@ void timeTests()
     auto timer_start1 = std::chrono::steady_clock::now();
     search.start(std::string("28699498")); //last string(#9692420)
     std::cout << "\nTime elapsed(ms) : " << since(timer_start1).count() << "\n";
+
+    BM_Search bm;
+    std::cout << "\n\t---Boyer-Moor---";
+    std::cout << "\nThe first string:\n";
+    auto timer_bm1 = std::chrono::steady_clock::now();
+    bm.start(std::string("42545219"));
+    std::cout <<"\nTime elapsed(ms) : " << since(timer_bm1).count() << "\n";
+
+    std::cout << "\nString in the middle:\n";
+    auto timer_bm2 = std::chrono::steady_clock::now();
+    bm.start(std::string("82959854")); //somewhere in the middle (#4232644)
+    std::cout << "\nTime elapsed(ms) : " << since(timer_bm2).count() << "\n";
+
+    std::cout << "\nThe last string:\n";
+    auto timer_bm3 = std::chrono::steady_clock::now();
+    bm.start(std::string("28699498")); //last string(#9692420)
+    std::cout << "\nTime elapsed(ms) : " << since(timer_bm3).count() << "\n";
+
 }
 
 int main()

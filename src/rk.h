@@ -61,7 +61,7 @@ protected:
 
 public:
     Search(){ text = pattern = ""; setFromFile(); };
-    Search(std::string text_, std::string image_) { text = text_; pattern = image_; setFromFile(); }
+    Search(std::string text_, std::string pattern_) { text = text_; pattern = pattern_; setFromFile(); }
     ~Search(){};
 
     //Getters
@@ -70,7 +70,7 @@ public:
     void printText(){ std::cout << "\n" << text << "\n"; }
     //Setters
     void setText(std::string text_){ text = text_; }
-    void setPattern(std::string image_){ pattern = image_; }
+    void setPattern(std::string pattern_){ pattern = pattern_; }
 
     // Set text from file
     void setFromFile()
