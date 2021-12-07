@@ -39,18 +39,18 @@ private:
             int BMT[256];
             for(i = 0; i < 256; i++) BMT[i] = substringLen;
             for(i = substringLen - 1; i >= 0; i--)
-                if(BMT[(short)(pattern[i])] == substringLen)
-                    BMT[(short)(pattern[i])] = substringLen - i - 1;
+                if(BMT[pattern[i]] == substringLen)
+                    BMT[pattern[i]] = substringLen - i - 1;
             position = substringLen - 1;
             while(position < stringLen)
                 if(pattern[substringLen - 1] != text[position])
-                    position += BMT[(short)(text[position])];
+                    position += BMT[text[position]];
                 else
                     for(i = substringLen - 2; i >= 0; i--)
                     {
                         if(pattern[i] != text[position - substringLen + i + 1])
                         {
-                            position += BMT[(short)(text[position - substringLen + i + 1])] - 1;
+                            position += BMT[text[position - substringLen + i + 1]] - 1;
                             break;
                         }
                         else
@@ -74,6 +74,7 @@ public:
         int res;
         setFromFile();
         setPattern(pattern_);
+        std::cout << "Searching : " << pattern_ << "...\n";
         res = search();
         std::cout << "\nDone " << res;
     }

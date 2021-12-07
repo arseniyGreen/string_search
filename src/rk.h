@@ -91,6 +91,7 @@ public:
     virtual void start(std::string toFind)
     {
         setPattern(toFind);
+        std::cout << "Searching : " << toFind << "...\n";
         std::list<int> answer = findHash();
         auto it = answer.begin();
         while(it != answer.end())
