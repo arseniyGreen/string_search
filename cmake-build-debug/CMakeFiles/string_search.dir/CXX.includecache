@@ -16,6 +16,18 @@ vector
 string
 -
 
+/home/notahacker/Documents/string_search/src/kmp.h
+iostream
+-
+string
+-
+exception
+-
+vector
+-
+list
+-
+
 /home/notahacker/Documents/string_search/src/main.cpp
 iostream
 -
@@ -31,6 +43,8 @@ rk.h
 /home/notahacker/Documents/string_search/src/rk.h
 bm.h
 /home/notahacker/Documents/string_search/src/bm.h
+kmp.h
+/home/notahacker/Documents/string_search/src/kmp.h
 
 /home/notahacker/Documents/string_search/src/rk.h
 

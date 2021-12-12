@@ -87,6 +87,9 @@
 		<Unit filename="/home/notahacker/Documents/string_search/src/bm.h">
 			<Option target="string_search"/>
 		</Unit>
+		<Unit filename="/home/notahacker/Documents/string_search/src/kmp.h">
+			<Option target="string_search"/>
+		</Unit>
 		<Unit filename="/home/notahacker/Documents/string_search/src/main.cpp">
 			<Option target="string_search"/>
 		</Unit>

@@ -3,5 +3,6 @@
 
 CMakeFiles/string_search.dir/src/main.cpp.o: \
  ../src/bm.h \
+ ../src/kmp.h \
  ../src/main.cpp \
  ../src/rk.h
