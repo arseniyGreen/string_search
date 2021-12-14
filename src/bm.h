@@ -1,15 +1,16 @@
 #include <iostream>
 #include <fstream>
-#include <vector>
+#include <cmath>
 #include <string>
 
 #define ALPH 256
 
-class BM_Search
+class BM
 {
 private:
     std::string text;
     std::string pattern;
+    int badChar[ALPH];
 
     void setFromFile() {
         std::ifstream file;
@@ -25,41 +26,44 @@ private:
         }
     }
 
-    int search()
+    std::list<int> search()
     {
-        int substringLen = 0; int stringLen = 0; int result = -1;
-        while(text[stringLen] != NULL) stringLen++;
-        while(pattern[substringLen] != NULL) substringLen++;
 
-        if(stringLen == 0){ std::cout << "\nIncorrect string."; }
-        else if(substringLen == 0){ std::cout << "\nIncorrect substring";}
-        else
+        int m = pattern.size();
+        int n = text.size();
+
+        std::list<int> returnList;
+
+        /* Bad char heuristic */
+        for(size_t i = 0; i < ALPH; i++) badChar[i] = -1; // Init
+        for(size_t i = 0; i < m; i++) badChar[(int)pattern[i]] = i;
+        /* BCH end */
+
+        int s = 0; /* s - shift of pattern */
+        while(s <= (n - m))
         {
-            int i, position;
-            int BMT[256];
-            for(i = 0; i < 256; i++) BMT[i] = substringLen;
-            for(i = substringLen - 1; i >= 0; i--)
-                if(BMT[pattern[i]] == substringLen)
-                    BMT[pattern[i]] = substringLen - i - 1;
-            position = substringLen - 1;
-            while(position < stringLen)
-                if(pattern[substringLen - 1] != text[position])
-                    position += BMT[text[position]];
-                else
-                    for(i = substringLen - 2; i >= 0; i--)
-                    {
-                        if(pattern[i] != text[position - substringLen + i + 1])
-                        {
-                            position += BMT[text[position - substringLen + i + 1]] - 1;
-                            break;
-                        }
-                        else
-                        {
-                            if(i == 0) return position - substringLen + 1;
-                        }
-                    }
+            int j = m - 1;
+            /* Keep reducing j while chars of pattern and txt match at this shift */
+            while(j >= 0 && pattern[j] == text[s + j]) j--;
+
+            /* If pattern present at this shift, j = -1 after above loop */
+            if(j < 0)
+            {
+//                std::cout << "\nPattern occures at " << s << '\n';
+                returnList.push_back(s);
+                /* Shift pattern that the next char in text aligns with last occurrence of it in pattern
+                 * Condition s + m < n necessary for case when pattern occurs at the end of text */
+                s += (s + m < n) ? m - badChar[text[s + m]] : 1;
+            }
+            else
+            {
+                /* Shift pattern so bad char in text aligns with last occurrence of it in pattern
+                 * max function needed to get positive shift*/
+
+                s += std::max(1, j - badChar[text[s + j]]);
+            }
         }
-        return result;
+        return returnList;
     }
 
 public:
@@ -71,11 +75,15 @@ public:
 
     void start(std::string pattern_)
     {
-        int res;
         setFromFile();
         setPattern(pattern_);
         std::cout << "Searching : " << pattern_ << "...\n";
-        res = search();
-        std::cout << "\nDone " << res;
+        std::list<int> res = search();
+        auto it = res.begin();
+        while(it != res.end())
+        {
+            std::cout << *it << " ";
+            *it++;
+        }
     }
 };

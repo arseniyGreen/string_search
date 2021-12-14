@@ -35,31 +35,34 @@ void timeTests()
 
     std::cout << "\nString in the middle:\n";
     auto timer_start = std::chrono::steady_clock::now();
-    search.start(std::string("alex2004")); //somewhere in the middle (#4232644)
+    search.start(std::string("THEBEST"));
     std::cout << "\nTime elapsed(ms) : " << since(timer_start).count() << "\n";
 
     std::cout << "\nThe last string:\n";
     auto timer_start1 = std::chrono::steady_clock::now();
-    search.start(std::string("sagar")); //last string(#9692420)
+    search.start(std::string("sagar"));
     std::cout << "\nTime elapsed(ms) : " << since(timer_start1).count() << "\n";
 
-//    BM_Search bm;
-//    std::cout << "\n\t---Boyer-Moor---";
-//    std::cout << "\nThe first string:\n";
-//    auto timer_bm1 = std::chrono::steady_clock::now();
-//    bm.start(std::string("123456"));
-//    std::cout <<"\nTime elapsed(ms) : " << since(timer_bm1).count() << "\n";
-//
-//    std::cout << "\nString in the middle:\n";
-//    auto timer_bm2 = std::chrono::steady_clock::now();
-//    bm.start(std::string("cassandra"));
-////    bm.start(std::string("alex2004")); //somewhere in the middle (#4232644)
-//    std::cout << "\nTime elapsed(ms) : " << since(timer_bm2).count() << "\n";
-//
-//    std::cout << "\nThe last string:\n";
-//    auto timer_bm3 = std::chrono::steady_clock::now();
-//    bm.start(std::string("sagar")); //last string(#9692420)
-//    std::cout << "\nTime elapsed(ms) : " << since(timer_bm3).count() << "\n";
+
+
+    BM bm;
+    std::cout << "\n\t---Boyer-Moor---";
+    std::cout << "\nThe first string:\n";
+    auto timer_bm1 = std::chrono::steady_clock::now();
+    bm.start(std::string("123456"));
+    std::cout <<"\nTime elapsed(ms) : " << since(timer_bm1).count() << "\n";
+
+    std::cout << "\nString in the middle:\n";
+    auto timer_bm2 = std::chrono::steady_clock::now();
+    bm.start(std::string("THEBEST"));
+    std::cout << "\nTime elapsed(ms) : " << since(timer_bm2).count() << "\n";
+
+    std::cout << "\nThe last string:\n";
+    auto timer_bm3 = std::chrono::steady_clock::now();
+    bm.start(std::string("sagar"));
+    std::cout << "\nTime elapsed(ms) : " << since(timer_bm3).count() << "\n";
+
+
 
     std::cout << "\n\t ---Knutt-Morris-Pratt---";
     KMP kmp;
@@ -70,7 +73,7 @@ void timeTests()
 
     std::cout << "\nString in the middle:\n";
     auto timer_kmp2 = std::chrono::steady_clock::now();
-    kmp.search(std::string("alex2004"));
+    kmp.search(std::string("THEBEST"));
     std::cout << "Time elapsed(ms) : " << since(timer_kmp2).count() << '\n';
 
     std::cout << "\nThe last string:\n";
@@ -82,6 +85,5 @@ void timeTests()
 int main()
 {
     timeTests();
-
     return 0;
 }
