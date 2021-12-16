@@ -8,13 +8,13 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_CXX
-  "/home/notahacker/Documents/string_search/src/main.cpp" "/home/notahacker/Documents/string_search/cmake-build-debug/CMakeFiles/string_search.dir/src/main.cpp.o"
+  "C:/string_search/src/main.cpp" "C:/string_search/cmake-build-debug/CMakeFiles/string_search.dir/src/main.cpp.obj"
   )
-set(CMAKE_CXX_COMPILER_ID "GNU")
+set(CMAKE_CXX_COMPILER_ID "MSVC")
 
 # The include file search paths:
 set(CMAKE_CXX_TARGET_INCLUDE_PATH
-  "../."
+  "../src"
   )
 
 # The set of dependency files which are needed:

@@ -4,6 +4,7 @@
 #include <string>
 
 #define ALPH 256
+#define FILEPATH "C:/string_search/dataset.txt"
 
 class BM
 {

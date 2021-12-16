@@ -2,7 +2,10 @@
 	"artifacts" : 
 	[
 		{
-			"path" : "string_search"
+			"path" : "string_search.exe"
+		},
+		{
+			"path" : "string_search.pdb"
 		}
 	],
 	"backtrace" : 1,
@@ -42,17 +45,17 @@
 			"compileCommandFragments" : 
 			[
 				{
-					"fragment" : "-g"
+					"fragment" : "/DWIN32 /D_WINDOWS /EHsc /Zi /Ob0 /Od /RTC1 -MDd"
 				},
 				{
-					"fragment" : "-std=gnu++14"
+					"fragment" : "-std:c++14"
 				}
 			],
 			"includes" : 
 			[
 				{
 					"backtrace" : 2,
-					"path" : "/home/notahacker/Documents/string_search/."
+					"path" : "C:/string_search/src"
 				}
 			],
 			"language" : "CXX",
@@ -66,7 +69,7 @@
 			},
 			"sourceIndexes" : 
 			[
-				0
+				2
 			]
 		}
 	],
@@ -76,18 +79,22 @@
 		"commandFragments" : 
 		[
 			{
-				"fragment" : "-g",
+				"fragment" : "/DWIN32 /D_WINDOWS /EHsc /Zi /Ob0 /Od /RTC1 -MDd",
 				"role" : "flags"
 			},
 			{
-				"fragment" : "",
+				"fragment" : "/machine:X86 /debug /INCREMENTAL /subsystem:console",
 				"role" : "flags"
+			},
+			{
+				"fragment" : "kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib",
+				"role" : "libraries"
 			}
 		],
 		"language" : "CXX"
 	},
 	"name" : "string_search",
-	"nameOnDisk" : "string_search",
+	"nameOnDisk" : "string_search.exe",
 	"paths" : 
 	{
 		"build" : ".",
@@ -96,19 +103,19 @@
 	"sourceGroups" : 
 	[
 		{
-			"name" : "Source Files",
-			"sourceIndexes" : 
-			[
-				0
-			]
-		},
-		{
 			"name" : "Header Files",
 			"sourceIndexes" : 
 			[
+				0,
 				1,
-				2,
 				3
+			]
+		},
+		{
+			"name" : "Source Files",
+			"sourceIndexes" : 
+			[
+				2
 			]
 		}
 	],
@@ -116,24 +123,24 @@
 	[
 		{
 			"backtrace" : 1,
-			"compileGroupIndex" : 0,
-			"path" : "src/main.cpp",
+			"path" : "src/bm.h",
 			"sourceGroupIndex" : 0
 		},
 		{
 			"backtrace" : 1,
-			"path" : "src/bm.h",
+			"path" : "src/kmp.h",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "src/main.cpp",
 			"sourceGroupIndex" : 1
 		},
 		{
 			"backtrace" : 1,
 			"path" : "src/rk.h",
-			"sourceGroupIndex" : 1
-		},
-		{
-			"backtrace" : 1,
-			"path" : "src/kmp.h",
-			"sourceGroupIndex" : 1
+			"sourceGroupIndex" : 0
 		}
 	],
 	"type" : "EXECUTABLE"

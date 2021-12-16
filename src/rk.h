@@ -1,7 +1,7 @@
 #ifndef STRING_SEARCH_RK_H
 #define STRING_SEARCH_RK_H
 
-#define FILEPATH "/home/notahacker/Documents/string_search/dataset.txt" // Change this
+#define FILEPATH "C:/string_search/dataset.txt"
 #define ALPH 256
 
 class Search{

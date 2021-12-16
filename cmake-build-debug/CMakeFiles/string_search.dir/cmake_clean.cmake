@@ -1,6 +1,8 @@
 file(REMOVE_RECURSE
-  "CMakeFiles/string_search.dir/src/main.cpp.o"
-  "string_search"
+  "CMakeFiles/string_search.dir/src/main.cpp.obj"
+  "string_search.exe"
+  "string_search.exe.manifest"
+  "string_search.lib"
   "string_search.pdb"
 )
 

@@ -6,7 +6,7 @@
 
 #IncludeRegexTransform: 
 
-/home/notahacker/Documents/string_search/src/bm.h
+C:/string_search/src/bm.h
 iostream
 -
 fstream
@@ -16,7 +16,7 @@ cmath
 string
 -
 
-/home/notahacker/Documents/string_search/src/kmp.h
+C:/string_search/src/kmp.h
 iostream
 -
 string
@@ -28,7 +28,7 @@ vector
 list
 -
 
-/home/notahacker/Documents/string_search/src/main.cpp
+C:/string_search/src/main.cpp
 iostream
 -
 string
@@ -40,11 +40,11 @@ list
 chrono
 -
 rk.h
-/home/notahacker/Documents/string_search/src/rk.h
+C:/string_search/src/rk.h
 bm.h
-/home/notahacker/Documents/string_search/src/bm.h
+C:/string_search/src/bm.h
 kmp.h
-/home/notahacker/Documents/string_search/src/kmp.h
+C:/string_search/src/kmp.h
 
-/home/notahacker/Documents/string_search/src/rk.h
+C:/string_search/src/rk.h
 

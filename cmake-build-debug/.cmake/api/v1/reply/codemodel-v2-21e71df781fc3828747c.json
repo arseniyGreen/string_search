@@ -6,7 +6,6 @@
 			[
 				{
 					"build" : ".",
-					"jsonFile" : "directory-.-Debug-f5ebdc15457944623624.json",
 					"minimumCMakeVersion" : 
 					{
 						"string" : "3.20"
@@ -39,7 +38,7 @@
 				{
 					"directoryIndex" : 0,
 					"id" : "string_search::@6890427a1f51a3e7e1df",
-					"jsonFile" : "target-string_search-Debug-181a75234f3717e04f6a.json",
+					"jsonFile" : "target-string_search-Debug-492d814dfaee523b7c65.json",
 					"name" : "string_search",
 					"projectIndex" : 0
 				}
@@ -49,12 +48,12 @@
 	"kind" : "codemodel",
 	"paths" : 
 	{
-		"build" : "/home/notahacker/Documents/string_search/cmake-build-debug",
-		"source" : "/home/notahacker/Documents/string_search"
+		"build" : "C:/string_search/cmake-build-debug",
+		"source" : "C:/string_search"
 	},
 	"version" : 
 	{
 		"major" : 2,
-		"minor" : 3
+		"minor" : 2
 	}
 }

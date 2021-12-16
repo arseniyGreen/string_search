@@ -13,6 +13,8 @@
 #include "bm.h"
 #include "kmp.h"
 
+#define FILEPATH "C:/string_search/dataset.txt"
+
 template<
     class result_t = std::chrono::milliseconds,
     class clock_t = std::chrono::steady_clock,
@@ -64,26 +66,27 @@ void timeTests()
 
 
 
-    std::cout << "\n\t ---Knutt-Morris-Pratt---";
+    std::cout << "\n\t ---Knut-Morris-Pratt---";
     KMP kmp;
     std::cout << "\nThe first string:\n";
     auto timer_kmp1 = std::chrono::steady_clock::now();
     kmp.search(std::string("123456"));
-    std::cout << "Time elapsed(ms) : " << since(timer_kmp1).count() << '\n';
+    std::cout << "\nTime elapsed(ms) : " << since(timer_kmp1).count() << '\n';
 
     std::cout << "\nString in the middle:\n";
     auto timer_kmp2 = std::chrono::steady_clock::now();
     kmp.search(std::string("THEBEST"));
-    std::cout << "Time elapsed(ms) : " << since(timer_kmp2).count() << '\n';
+    std::cout << "\nTime elapsed(ms) : " << since(timer_kmp2).count() << '\n';
 
     std::cout << "\nThe last string:\n";
     auto timer_kmp3 = std::chrono::steady_clock::now();
     kmp.search(std::string("sagar"));
-    std::cout << "Time elapsed(ms) : " << since(timer_kmp3).count() << '\n';
+    std::cout << "\nTime elapsed(ms) : " << since(timer_kmp3).count() << '\n';
 }
 
 int main()
 {
     timeTests();
+
     return 0;
 }

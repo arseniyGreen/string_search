@@ -4,62 +4,69 @@
 #include <vector>
 #include <list>
 
-#define FILEPATH "/home/notahacker/Documents/string_search/dataset.txt"
+#define FILEPATH "C:/string_search/dataset.txt"
 
 #ifndef STRING_SEARCH_KMP_H
 #define STRING_SEARCH_KMP_H
 
 class KMP{
 private:
-    std::string S; // pattern
-    std::string T; // text
+    std::string pattern; // pattern
+    std::string text; // text
 
-    std::vector<int> prefix()
+    void lps_func(int M, std::vector<int>& lps_array)
     {
-        int n = (int) S.length();
-        std::vector<int> pi(n);
-        for(size_t i = 1; i < n; i++)
+        int len = 0; // length of the biggest suffix
+        lps_array[0] = 0; // lps[0] always 0
+        /* Calculate lps[i] for i = 1 to M - 1 */
+        size_t i = 1;
+        while(i < M)
         {
-            int j = pi[i - 1];
-            while(j > 0 && S[i] != S[j]) j = pi[j - 1];
-            if(S[i] == S[j]) ++j;
-            pi[i] = j;
+            if(pattern[i] == pattern[len])
+            {
+                len++;
+                lps_array[i] = len;
+                i++;
+            }
+            else
+            {
+                if(len != 0)
+                {
+                    len = lps_array[len - 1];
+                }
+                else
+                {
+                    lps_array[i] = 0;
+                    i++;
+                }
+            }
         }
-        return pi;
     }
 
-    int kmp()
+    std::list<int> kmp()
     {
-        int sl = T.length(); int ssl = S.length(); // sl - string len, ssl - substring len
-        int res = -1;
-        if(sl == 0) throw std::runtime_error("Invalid string\n");
-        else if(ssl == 0) throw std::runtime_error("Invalid substring\n");
-        else
-        {
-            int i, j = 0, k = -1;
-            int* d = new int[1000];
-            d[0] = -1;
-            while(j < ssl - 1){
-                while(k >= 0 && S[j] != S[k])
-                    k = d[k];
-                j++;
-                k++;
-                if(S[j] == S[k])
-                    d[j] = d[k];
-                else
-                    d[j] = k;
+        int n = text.length();
+        int m = pattern.length();
+        std::vector<int>Lps(m);
+        std::list<int> answer;
+        lps_func(m, Lps); //make lps array
+
+        int i = 0, j = 0;
+        while(i < n){
+            if(pattern[j] == text[i]){
+                j++; i++;
             }
-            i = j = 0;
-            while(j < ssl && i < sl){
-                while(j >= 0 && T[i] != S[j])
-                    j = d[j];
-                i++;
-                j++;
+            if(j == m)
+            {
+                j = Lps[j - 1];
+                answer.push_back(i - j);
             }
-            delete[] d;
-            (j == ssl) ? res = i - ssl : res = -1;
+            else if(i < n && pattern[j] != text[i]){
+                if(j != 0) j = Lps[j - 1];
+                else i++;
+            }
         }
-        return res;
+        return answer;
     }
 
     void setFromFile()
@@ -69,7 +76,7 @@ private:
         if(file.is_open()){
             std::string line;
             while(std::getline(file, line)){
-                T += line + "\n";
+                text += line + "\n";
             }
             file.close();
         }
@@ -79,16 +86,27 @@ private:
     }
 
 public:
-    KMP(){ S = T = ""; }
-    KMP(std::string S_, std::string T_){ S = S_; T = T_; }
+    KMP(){ text = pattern = ""; }
+    KMP(std::string pattern_, std::string text_){ pattern = pattern_; text = text_; }
     ~KMP(){}
+
+    void setText(std::string text_){ text = text_; }
+    void setPattern(std::string pattern_){ pattern = pattern_; }
+
+    std::string getText() { return text; }
+    std::string getPattern() { return pattern; }
 
     void search(std::string pattern_)
     {
-        S = pattern_;
+        pattern = pattern_;
         setFromFile();
-        std::cout << "\nSearching : " << S << "...\n";
-        std::cout << kmp();
+        std::cout << "\nSearching : " << pattern << "...\n";
+        std::list<int> ans = kmp();
+        auto it = ans.begin();
+        while(it != ans.end()){
+            std::cout << *it << " ";
+            *it++;
+        }
     }
 };
 
