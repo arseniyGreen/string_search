@@ -1,7 +1,5 @@
-#include <iostream>
-#include <fstream>
-#include <cmath>
-#include <string>
+#ifndef STRING_SEARCH_BM_H
+#define STRING_SEARCH_BM_H
 
 #define ALPH 256
 #define FILEPATH "C:/string_search/dataset.txt"
@@ -23,7 +21,7 @@ private:
             }
             file.close();
         } else {
-            std::cerr << "Unable to open file.\n";
+            throw std::runtime_error("Unable to open file");
         }
     }
 
@@ -32,6 +30,9 @@ private:
 
         int m = pattern.size();
         int n = text.size();
+
+        if(m < 1) throw std::runtime_error("Incorrect pattern.");
+        if(n < 1) throw std::runtime_error("Incorrect text");
 
         std::list<int> returnList;
 
@@ -50,7 +51,6 @@ private:
             /* If pattern present at this shift, j = -1 after above loop */
             if(j < 0)
             {
-//                std::cout << "\nPattern occures at " << s << '\n';
                 returnList.push_back(s);
                 /* Shift pattern that the next char in text aligns with last occurrence of it in pattern
                  * Condition s + m < n necessary for case when pattern occurs at the end of text */
@@ -88,3 +88,5 @@ public:
         }
     }
 };
+
+#endif

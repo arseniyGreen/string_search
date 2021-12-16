@@ -1,13 +1,7 @@
-#include <iostream>
-#include <string>
-#include <exception>
-#include <vector>
-#include <list>
-
-#define FILEPATH "C:/string_search/dataset.txt"
-
 #ifndef STRING_SEARCH_KMP_H
 #define STRING_SEARCH_KMP_H
+
+#define FILEPATH "C:/string_search/dataset.txt"
 
 class KMP{
 private:
@@ -47,6 +41,10 @@ private:
     {
         int n = text.length();
         int m = pattern.length();
+
+        if(n < 1) throw std::runtime_error("Incorrect text");
+        if(m < 1) throw std::runtime_error("Incorrect pattern");
+
         std::vector<int>Lps(m);
         std::list<int> answer;
         lps_func(m, Lps); //make lps array
@@ -81,7 +79,7 @@ private:
             file.close();
         }
         else{
-            std::cerr << "Unable to open file.\n";
+            throw std::runtime_error("Unable to open file");
         }
     }
 

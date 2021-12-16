@@ -6,14 +6,13 @@
  * */
 #include <iostream>
 #include <string>
-#include <fstream>
-#include <list>
 #include <chrono>
+#include <vector>
+#include <list>
+#include <fstream>
 #include "rk.h"
 #include "bm.h"
 #include "kmp.h"
-
-#define FILEPATH "C:/string_search/dataset.txt"
 
 template<
     class result_t = std::chrono::milliseconds,
@@ -86,7 +85,9 @@ void timeTests()
 
 int main()
 {
-    timeTests();
+    try{
+        timeTests();
+    } catch(std::exception &e){ std::cout << e.what(); }
 
     return 0;
 }

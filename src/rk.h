@@ -25,6 +25,9 @@ protected:
         int textLength = text.length();
         int patternLength = pattern.length();
 
+        if(textLength < 1) throw std::runtime_error("Incorrect text");
+        if(patternLength < 1) throw std::runtime_error("Incorrect pattern");
+
         // Calculate h (== pow(ALPH, patternLength - 1))
         for(size_t i = 0; i < patternLength - 1; i++){
             h = (h * ALPH) % Q;
@@ -83,7 +86,7 @@ public:
             file.close();
         }
         else{
-            std::cerr << "Unable to open file.\n";
+            throw std::runtime_error("Unable to open file");
         }
     }
     virtual void start(std::string toFind)

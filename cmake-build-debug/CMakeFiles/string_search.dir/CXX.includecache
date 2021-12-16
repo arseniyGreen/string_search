@@ -7,37 +7,21 @@
 #IncludeRegexTransform: 
 
 C:/string_search/src/bm.h
-iostream
--
-fstream
--
-cmath
--
-string
--
 
 C:/string_search/src/kmp.h
-iostream
--
-string
--
-exception
--
-vector
--
-list
--
 
 C:/string_search/src/main.cpp
 iostream
 -
 string
 -
-fstream
+chrono
+-
+vector
 -
 list
 -
-chrono
+fstream
 -
 rk.h
 C:/string_search/src/rk.h
