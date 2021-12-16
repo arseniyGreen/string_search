@@ -4,7 +4,7 @@
 #define FILEPATH "C:/string_search/dataset.txt"
 #define ALPH 256
 
-class Search{
+class RK{
 protected:
     std::string text; // text, where we'll search pattern
     std::string pattern; // pattern to find
@@ -15,10 +15,9 @@ protected:
     /* New substring hash formula : H = (Hp - Cp * b^(m-1)) * b + Cn,
      * where Hp - previous hash, Cp - previous char, Cn - new char, m - substring length, b - const */
 
-    virtual std::list<int> findHash()
+    virtual std::list<int> rkSearch()
     {
         int textHash, patternHash; textHash = patternHash = 0;
-        size_t operations = 0; // Number of search loop iterations
         const int Q = 101; // Prime number
         int h = 1; // Multiplier
         std::list<int> positions;
@@ -40,7 +39,6 @@ protected:
         // Rolling hashing
         for(size_t i = 0; i < textLength - patternLength; i++)
         {
-            operations++;
             // Compare hashes of text and pattern
             if(textHash == patternHash)
             {
@@ -60,9 +58,9 @@ protected:
     }
 
 public:
-    Search(){ text = pattern = ""; setFromFile(); };
-    Search(std::string text_, std::string pattern_) { text = text_; pattern = pattern_; setFromFile(); }
-    ~Search(){};
+    RK(){ text = pattern = ""; setFromFile(); };
+    RK(std::string text_, std::string pattern_) { text = text_; pattern = pattern_; setFromFile(); }
+    ~RK(){};
 
     //Getters
     std::string getText(){ return text; }
@@ -92,7 +90,7 @@ public:
     {
         setPattern(toFind);
         std::cout << "Searching : " << toFind << "...\n";
-        std::list<int> answer = findHash();
+        std::list<int> answer = rkSearch();
         auto it = answer.begin();
         while(it != answer.end())
         {
@@ -102,10 +100,10 @@ public:
     }
 };
 
-class partialSearch : public Search
+class RK_partial : public RK
 {
 private:
-    std::list<std::pair<int, int>> findPartialHash()
+    std::list<std::pair<int, int>> rkSearch_partial()
     {
         int textHash, patternHash; textHash = patternHash = 0;
         size_t operations = 0; // Number of search loop iterations
@@ -158,7 +156,7 @@ public:
     void start(std::string toFind) override
     {
         setPattern(toFind);
-        std::list<std::pair<int,int>> answer = findPartialHash();
+        std::list<std::pair<int,int>> answer = rkSearch_partial();
         auto it = answer.begin();
         while(it != answer.end())
         {

@@ -29,10 +29,10 @@ void timeTests()
 {
     std::cout << "\n\t---Rabin-Karp---";
     std::cout << "\n\tFull coincidence search:\n";
-    Search search;
-    std::cout << "\nThe first string:\n";
+    RK search;
+    std::cout << "\nString in the begining:\n";
     auto timer_first = std::chrono::steady_clock::now();
-    search.start(std::string("123456"));
+    search.start(std::string("thisisqwerty"));
     std::cout <<"\nTime elapsed(ms) : " << since(timer_first).count() << "\n";
 
     std::cout << "\nString in the middle:\n";
@@ -49,9 +49,9 @@ void timeTests()
 
     BM bm;
     std::cout << "\n\t---Boyer-Moor---";
-    std::cout << "\nThe first string:\n";
+    std::cout << "\nString in the begining:\n";
     auto timer_bm1 = std::chrono::steady_clock::now();
-    bm.start(std::string("123456"));
+    bm.start(std::string("thisisqwerty"));
     std::cout <<"\nTime elapsed(ms) : " << since(timer_bm1).count() << "\n";
 
     std::cout << "\nString in the middle:\n";
@@ -68,9 +68,9 @@ void timeTests()
 
     std::cout << "\n\t ---Knut-Morris-Pratt---";
     KMP kmp;
-    std::cout << "\nThe first string:\n";
+    std::cout << "String in the beginning:\n";
     auto timer_kmp1 = std::chrono::steady_clock::now();
-    kmp.search(std::string("123456"));
+    kmp.search(std::string("thisisqwerty"));
     std::cout << "\nTime elapsed(ms) : " << since(timer_kmp1).count() << '\n';
 
     std::cout << "\nString in the middle:\n";
