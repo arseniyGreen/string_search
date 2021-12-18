@@ -1,7 +1,7 @@
 #ifndef STRING_SEARCH_KMP_H
 #define STRING_SEARCH_KMP_H
 
-#define FILEPATH "C:/string_search/dataset.txt"
+#define FILEPATH "../dataset.txt"
 
 class KMP{
 private:

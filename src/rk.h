@@ -1,7 +1,7 @@
 #ifndef STRING_SEARCH_RK_H
 #define STRING_SEARCH_RK_H
 
-#define FILEPATH "C:/string_search/dataset.txt"
+#define FILEPATH "../dataset.txt"
 #define ALPH 256
 
 class RK{

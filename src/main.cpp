@@ -83,11 +83,21 @@ void timeTests()
     std::cout << "\nTime elapsed(ms) : " << since(timer_kmp3).count() << '\n';
 }
 
+void rkPartialTests()
+{
+    RK_partial rkp;
+    std::string first = "cardenaz";
+    std::string second = "apple20";
+    rkp.start(first);
+    rkp.start(second);
+
+}
+
 int main()
 {
     try{
         timeTests();
-    } catch(std::exception &e){ std::cout << e.what(); }
+    } catch(std::runtime_error &e){ std::cout << e.what(); }
 
     return 0;
 }

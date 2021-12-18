@@ -2,7 +2,7 @@
 #define STRING_SEARCH_BM_H
 
 #define ALPH 256
-#define FILEPATH "C:/string_search/dataset.txt"
+#define FILEPATH "../dataset.txt"
 
 class BM
 {
