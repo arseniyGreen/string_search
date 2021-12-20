@@ -10,6 +10,7 @@
 #include <vector>
 #include <list>
 #include <fstream>
+#include <cmath>
 #include "rk.h"
 #include "bm.h"
 #include "kmp.h"
@@ -93,11 +94,53 @@ void rkPartialTests()
 
 }
 
+class Menu{
+private:
+    short choice;
+    void callMenu()
+    {
+        std::cout << "\nChoose option : \n";
+        std::cout << "[1] Launch tests\n[2] Launch partial RK search\n[3] Search string\n[4] Exit\n";
+        std::cin >> choice;
+        switch (choice) {
+            case 1:
+                timeTests();
+                break;
+            case 2:
+                rkPartialTests();
+                break;
+            case 3:
+            {
+                std::cout << "String to search : ";
+                std::string str;
+                std::cin >> str;
+                RK rk; rk.start(std::string(str));
+                break;
+            }
+            case 4: {
+                break;
+            }
+            default:
+                throw std::runtime_error("\nUnexpected input.");
+        }
+    }
+
+public:
+    Menu(){ choice = NULL; };
+    ~Menu(){};
+
+    void start()
+    {
+        callMenu();
+    }
+};
+
 int main()
 {
     try{
-        timeTests();
-    } catch(std::runtime_error &e){ std::cout << e.what(); }
+        Menu menu;
+        menu.start();
+    }catch(std::runtime_error &e) { std::cerr << e.what(); }
 
     return 0;
 }

@@ -42,24 +42,27 @@ private:
         int n = text.length();
         int m = pattern.length();
 
-        if(n < 1) throw std::runtime_error("Incorrect text");
-        if(m < 1) throw std::runtime_error("Incorrect pattern");
+        int* nPtr = &n;
+        int* mPtr = &m;
 
-        std::vector<int>Lps(m);
+        if(*nPtr < 1) throw std::runtime_error("Incorrect text");
+        if(*mPtr < 1) throw std::runtime_error("Incorrect pattern");
+
+        std::vector<int>Lps(*mPtr);
         std::list<int> answer;
-        lps_func(m, Lps); //make lps array
+        lps_func(*mPtr, Lps); //make lps array
 
         int i = 0, j = 0;
-        while(i < n){
+        while(i < *nPtr){
             if(pattern[j] == text[i]){
                 j++; i++;
             }
-            if(j == m)
+            if(j == *mPtr)
             {
                 j = Lps[j - 1];
                 answer.push_back(i - j);
             }
-            else if(i < n && pattern[j] != text[i]){
+            else if(i < *nPtr && pattern[j] != text[i]){
                 if(j != 0) j = Lps[j - 1];
                 else i++;
             }

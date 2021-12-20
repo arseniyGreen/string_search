@@ -27,24 +27,26 @@ private:
 
     std::list<int> search()
     {
-
         int m = pattern.size();
         int n = text.size();
 
-        if(m < 1) throw std::runtime_error("Incorrect pattern.");
-        if(n < 1) throw std::runtime_error("Incorrect text");
+        int* mPtr = &m;
+        int* nPtr = &n;
+
+        if(*mPtr < 1) throw std::runtime_error("Incorrect pattern.");
+        if(*nPtr < 1) throw std::runtime_error("Incorrect text");
 
         std::list<int> returnList;
 
         /* Bad char heuristic */
         for(size_t i = 0; i < ALPH; i++) badChar[i] = -1; // Init
-        for(size_t i = 0; i < m; i++) badChar[(int)pattern[i]] = i;
+        for(size_t i = 0; i < *mPtr; i++) badChar[(int)pattern[i]] = i;
         /* BCH end */
 
         int s = 0; /* s - shift of pattern */
-        while(s <= (n - m))
+        while(s <= (nPtr - mPtr))
         {
-            int j = m - 1;
+            int j = *mPtr - 1;
             /* Keep reducing j while chars of pattern and txt match at this shift */
             while(j >= 0 && pattern[j] == text[s + j]) j--;
 
@@ -53,8 +55,8 @@ private:
             {
                 returnList.push_back(s);
                 /* Shift pattern that the next char in text aligns with last occurrence of it in pattern
-                 * Condition s + m < n necessary for case when pattern occurs at the end of text */
-                s += (s + m < n) ? m - badChar[text[s + m]] : 1;
+                 * Condition s + mPtr < nPtr necessary for case when pattern occurs at the end of text */
+                s += (s + *mPtr < *nPtr) ? *mPtr - badChar[text[s + *mPtr]] : 1;
             }
             else
             {

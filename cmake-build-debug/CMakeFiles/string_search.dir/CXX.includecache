@@ -23,6 +23,8 @@ list
 -
 fstream
 -
+cmath
+-
 rk.h
 C:/string_search/src/rk.h
 bm.h

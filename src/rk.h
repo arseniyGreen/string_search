@@ -25,36 +25,41 @@ protected:
         int textLength = text.length();
         int patternLength = pattern.length();
 
-        if(textLength < 1) throw std::runtime_error("Incorrect text");
-        if(patternLength < 1) throw std::runtime_error("Incorrect pattern");
+        int* tl = &textLength; // Оптимизация памяти
+        int* pl = &patternLength;
 
-        // Calculate h (== pow(ALPH, patternLength - 1))
-        for(size_t i = 0; i < patternLength - 1; i++){
+        if(*tl < 1) throw std::runtime_error("Incorrect text");
+        if(*pl < 1) throw std::runtime_error("Incorrect pattern");
+
+        // Calculate h (== pow(ALPH, pl - 1))
+        for(size_t i = 0; i < *pl - 1; i++){
             h = (h * ALPH) % Q;
         }
 
+//        h = std::pow(ALPH, *pl - 1); // Оптимизация цикла
+
         // Calculate starting hash
-        for(size_t i = 0; i < patternLength; i++){
+        for(size_t i = 0; i < *pl; i++){
             textHash = ((ALPH * textHash) + text[i]) % Q;
             patternHash = ((ALPH * patternHash) + pattern[i]) % Q;
         }
 
         // Rolling hashing
-        for(size_t i = 0; i < textLength - patternLength; i++)
+        for(size_t i = 0; i < tl - pl; i++)
         {
             // Compare hashes of text and pattern
             if(textHash == patternHash)
             {
                 // Check chars match
-                for(size_t j = 0; j < patternLength; j++)
+                for(size_t j = 0; j < *pl; j++)
                 {
                     stringSize = j + 1;
                     if(text[i + j] != pattern[j]) break;
                 }
-                if(stringSize == patternLength) positions.push_back(i);
+                if(stringSize == *pl) positions.push_back(i);
             }
             // Calculate next hash
-            textHash = ((ALPH * (textHash - (h * text[i]))) + text[i + patternLength]) % Q;
+            textHash = ((ALPH * (textHash - (h * text[i]))) + text[i + *pl]) % Q;
             if(textHash < 0) textHash += Q;
         }
         return positions;
@@ -132,10 +137,7 @@ private:
         for(size_t i = 0; i < textLength - patternLength; i++)
         {
             std::pair<int, int> coincidence; // Here we store data for every coincidence
-            operations++;
-            // Compare hashes of text and pattern
-//            if(textHash == patternHash )
-//            {
+
             // Check chars match
             // Here we make partial comparison
             int matches = 0; // Recording number of matched chars, then find % of coincidence
@@ -147,8 +149,8 @@ private:
             double percentage = matches * 100 / stringSize;
             coincidence.first = i;
             coincidence.second = percentage;
-            if(percentage > 50) positions.push_back(coincidence);
-            //}
+            if(percentage > 75) positions.push_back(coincidence);
+
             //Calculate next hash
             textHash = ((ALPH * (textHash - (h * text[i]))) + text[i + patternLength]) % Q;
             if(textHash < 0) textHash += Q;
